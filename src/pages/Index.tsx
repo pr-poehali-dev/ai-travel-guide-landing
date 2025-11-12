@@ -25,8 +25,7 @@ export default function Index() {
             <div className="border-t border-gray-200 pt-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Зачем это нужно сейчас</h2>
               <p className="text-base text-gray-700 leading-relaxed">
-                <span className="font-semibold">Коротко:</span> чтобы у вас не зависали фильмы и видеозвонки, связь держалась и в офисе, и в подвальном клубе, а интернет оставался быстрым и стабильным — даже при растущей нагрузке на сеть. По данным Минцифры, совокупный трафик фиксированных и мобильных сетей в РФ в 2024 году вырос примерно на <span className="font-semibold">24%</span> и продолжает расти в 2025-м.{' '}
-                <a href="#" className="text-blue-600 hover:underline">(Тадвизер)</a>
+                <span className="font-semibold">Коротко:</span> чтобы у вас не зависали фильмы и видеозвонки, связь держалась и в офисе, и в подвальном клубе, а интернет оставался быстрым и стабильным — даже при растущей нагрузке на сеть. По данным Минцифры, совокупный трафик фиксированных и мобильных сетей в РФ в 2024 году вырос примерно на <span className="font-semibold">24%</span> и продолжает расти в 2025-м.
               </p>
             </div>
 
@@ -36,22 +35,19 @@ export default function Index() {
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#FFDB00] mt-2 flex-shrink-0"></div>
                   <p className="text-base text-gray-700 leading-relaxed">
-                    <span className="font-semibold">Инфляция всё ещё выше целевого уровня.</span> Банк России ожидает по итогам 2025 года <span className="font-semibold">6,5–7,0%</span> и возвращение к цели позже, хотя динамика замедляется; ключевая ставка постепенно снижается с пиков 2024 года.{' '}
-                    <a href="#" className="text-blue-600 hover:underline">(Центральный банк России)</a>
+                    <span className="font-semibold">Инфляция всё ещё выше целевого уровня.</span> Банк России ожидает по итогам 2025 года <span className="font-semibold">6,5–7,0%</span> и возвращение к цели позже, хотя динамика замедляется; ключевая ставка постепенно снижается с пиков 2024 года.
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#FFDB00] mt-2 flex-shrink-0"></div>
                   <p className="text-base text-gray-700 leading-relaxed">
-                    <span className="font-semibold">Импорт и сложная техника.</span> Значительная часть телеком-оборудования и комплектующих — импортного происхождения; санкционные ограничения и усложнение логистики повышают стоимость и сроки поставок.{' '}
-                    <a href="#" className="text-blue-600 hover:underline">(Finance)</a>
+                    <span className="font-semibold">Импорт и сложная техника.</span> Значительная часть телеком-оборудования и комплектующих — импортного происхождения; санкционные ограничения и усложнение логистики повышают стоимость и сроки поставок.
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#FFDB00] mt-2 flex-shrink-0"></div>
                   <p className="text-base text-gray-700 leading-relaxed">
-                    <span className="font-semibold">Электроэнергия и дата-центры.</span> Энергия — крупная статья расходов сети и ДЦ; тарифная нагрузка в ряде регионов в 2025 году растёт двузначными темпами, что напрямую влияет на себестоимость услуг.{' '}
-                    <a href="#" className="text-blue-600 hover:underline">(Интерфакс)</a>
+                    <span className="font-semibold">Электроэнергия и дата-центры.</span> Энергия — крупная статья расходов сети и ДЦ; тарифная нагрузка в ряде регионов в 2025 году растёт двузначными темпами, что напрямую влияет на себестоимость услуг.
                   </p>
                 </li>
               </ul>
@@ -63,8 +59,7 @@ export default function Index() {
                 Мы инвестируем в сеть (больше базовых станций, апгрейды ядра, емкость магистралей) и в сервисы — чтобы выдерживать рост трафика и поддерживать качество. При этом часть затрат привязана к импорту и энергии, а также к общей ценовой динамике в экономике. Корректируя стоимость архивных тарифов, мы сохраняем актуальные планы <span className="font-semibold">конкурентными по рынку</span> и не допускаем, чтобы архив стал дороже сопоставимых действующих предложений.
               </p>
               <p className="text-base text-gray-700 leading-relaxed">
-                Коротко про объём рынка: в стране <span className="font-semibold">~256 млн активных SIM-карт</span>, нагрузка на сети высока — это требует постоянных вложений.{' '}
-                <a href="#" className="text-blue-600 hover:underline">(Тадвизер)</a>
+                Коротко про объём рынка: в стране <span className="font-semibold">~256 млн активных SIM-карт</span>, нагрузка на сети высока — это требует постоянных вложений.
               </p>
             </div>
 
