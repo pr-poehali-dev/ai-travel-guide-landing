@@ -83,7 +83,7 @@ export default function Index() {
                   <div>
                     <p className="text-base font-semibold text-gray-900 mb-2">Точечно.</p>
                     <p className="text-base text-gray-700 leading-relaxed">
-                      В первую очередь меняем условия <span className="font-semibold">архивных</span> планов, которые долго не пересматривались.
+                      Меняем условия <span className="font-semibold">архивных тарифных</span> планов, которые долго не пересматривались.
                     </p>
                   </div>
                 </div>
