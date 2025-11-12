@@ -96,9 +96,7 @@ export default function Index() {
                   </div>
                   <div>
                     <p className="text-base font-semibold text-gray-900 mb-2">Прозрачно.</p>
-                    <p className="text-base text-gray-700 leading-relaxed">
-                      Пишем заранее, указываем дату первого списания в новом размере и объясняем причины простым языком (инфляция, импорт, энергия, рост трафика).
-                    </p>
+                    <p className="text-base text-gray-700 leading-relaxed">Пишем заранее и указываем дату первого списания в новом размере</p>
                   </div>
                 </div>
               </div>
