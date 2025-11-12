@@ -31,7 +31,7 @@ export default function Index() {
             <div className="border-t border-gray-200 pt-8">
               <h3 className="text-xl font-bold text-gray-900 mb-4">По порядку</h3>
               <p className="text-base text-gray-700 leading-relaxed mb-4">
-                Ещё вчера ваш тариф стоил <span className="font-semibold">300 ₽</span>, а сегодня за тот же пакет просят <span className="font-semibold">350 ₽</span> — естественно, это может раздражать.
+                Ещё вчера ваш тариф стоил <span className="font-semibold">500 ₽</span>, а сегодня за тот же пакет просят <span className="font-semibold">350 ₽</span> — естественно, это может раздражать.
               </p>
               <p className="text-base text-gray-700 leading-relaxed">
                 Честно: даже внутри <span className="font-semibold">билайн</span> мы не в восторге от любых повышений. Но есть причины, о которых важно говорать открыто.
