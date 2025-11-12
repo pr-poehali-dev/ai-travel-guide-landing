@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 
 export default function Index() {
   const [gameStarted, setGameStarted] = useState(false);
-  const [paddle, setPaddle] = useState({ x: 350, y: 550, width: 100, height: 15 });
+  const [paddle, setPaddle] = useState({ x: 350, y: window.innerHeight - 50, width: 100, height: 15 });
   const [ball, setBall] = useState({ x: 400, y: 300, vx: 3, vy: -3, radius: 8 });
   const [letters, setLetters] = useState<Array<{ id: string; text: string; x: number; y: number; vy: number; destroyed: boolean; element?: HTMLElement }>>([]);
   const [keys, setKeys] = useState({ left: false, right: false });
@@ -64,7 +64,7 @@ export default function Index() {
         let newX = prev.x;
         if (keys.left) newX -= 8;
         if (keys.right) newX += 8;
-        newX = Math.max(0, Math.min(800 - prev.width, newX));
+        newX = Math.max(0, Math.min(window.innerWidth - prev.width, newX));
         return { ...prev, x: newX };
       });
 
@@ -85,7 +85,7 @@ export default function Index() {
           newY = paddle.y - prev.radius;
         }
 
-        if (newY > 600) {
+        if (newY > window.innerHeight) {
           newX = 400;
           newY = 300;
           newVx = 3;
@@ -106,7 +106,7 @@ export default function Index() {
 
         if (distance < ball.radius + 10) {
           if (letter.element) {
-            letter.element.style.opacity = '0.3';
+            letter.element.style.visibility = 'hidden';
           }
           return { ...letter, destroyed: true, vy: 2 };
         }
@@ -137,12 +137,14 @@ export default function Index() {
             <span className="text-2xl font-bold text-black">билайн</span>
           </div>
           
-          <button
-            onClick={startGame}
-            className="mb-8 px-8 py-4 bg-[#FFDB00] text-black font-bold text-xl rounded-full hover:bg-[#FFE54D] transition-colors shadow-lg"
-          >
-            Начать
-          </button>
+          {!gameStarted && (
+            <button
+              onClick={startGame}
+              className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 px-8 py-4 bg-[#FFDB00] text-black font-bold text-xl rounded-full hover:bg-[#FFE54D] transition-colors shadow-lg"
+            >
+              Начать
+            </button>
+          )}
         </div>
 
         <Card className="rounded-3xl p-8 md:p-12 shadow-2xl bg-white">
@@ -334,7 +336,7 @@ export default function Index() {
       )}
 
       {gameStarted && (
-        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-black/80 text-white px-6 py-3 rounded-full z-50">
+        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-black/80 text-white px-6 py-3 rounded-full z-[60]">
           Управление: ← → стрелки
         </div>
       )}
