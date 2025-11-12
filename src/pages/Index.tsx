@@ -23,7 +23,7 @@ export default function Index() {
             </div>
 
             <div className="border-t border-gray-200 pt-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Зачем это нужно сейчас</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Зачем это нужно </h2>
               <p className="text-base text-gray-700 leading-relaxed">
                 <span className="font-semibold">Коротко:</span> чтобы у вас не зависали фильмы и видеозвонки, связь держалась и в офисе, и в подвальном клубе, а интернет оставался быстрым и стабильным — даже при растущей нагрузке на сеть. По данным Минцифры, совокупный трафик фиксированных и мобильных сетей в РФ в 2024 году вырос примерно на <span className="font-semibold">24%</span> и продолжает расти в 2025-м.
               </p>
