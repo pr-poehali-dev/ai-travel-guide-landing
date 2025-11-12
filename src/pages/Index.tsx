@@ -3,7 +3,7 @@ import Icon from "@/components/ui/icon";
 
 export default function Index() {
   return (
-    <div className="min-h-screen bg-stone-300" style={{ backgroundColor: '#FFDB00' }}>
+    <div className="min-h-screen bg-gray-400" style={{ backgroundColor: '#FFDB00' }}>
       <div className="max-w-[800px] mx-auto px-4 py-12 md:py-16">
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-8">
