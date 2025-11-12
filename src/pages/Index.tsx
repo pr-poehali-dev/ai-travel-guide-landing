@@ -1,9 +1,133 @@
 import { Card } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
+import { useState, useEffect, useRef } from "react";
 
 export default function Index() {
+  const [gameStarted, setGameStarted] = useState(false);
+  const [paddle, setPaddle] = useState({ x: 350, y: 550, width: 100, height: 15 });
+  const [ball, setBall] = useState({ x: 400, y: 300, vx: 3, vy: -3, radius: 8 });
+  const [letters, setLetters] = useState<Array<{ id: string; text: string; x: number; y: number; vy: number; destroyed: boolean; element?: HTMLElement }>>([]);
+  const [keys, setKeys] = useState({ left: false, right: false });
+  const canvasRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number>();
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') setKeys(prev => ({ ...prev, left: true }));
+      if (e.key === 'ArrowRight') setKeys(prev => ({ ...prev, right: true }));
+    };
+    const handleKeyUp = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') setKeys(prev => ({ ...prev, left: false }));
+      if (e.key === 'ArrowRight') setKeys(prev => ({ ...prev, right: false }));
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }, []);
+
+  const startGame = () => {
+    setGameStarted(true);
+    const textElements = document.querySelectorAll('h1, h2, h3, h4, p, span');
+    const letterArray: Array<{ id: string; text: string; x: number; y: number; vy: number; destroyed: boolean; element?: HTMLElement }> = [];
+    
+    textElements.forEach((el, idx) => {
+      const rect = el.getBoundingClientRect();
+      const text = el.textContent || '';
+      
+      for (let i = 0; i < text.length; i++) {
+        if (text[i].trim()) {
+          letterArray.push({
+            id: `${idx}-${i}`,
+            text: text[i],
+            x: rect.left + (i * 10),
+            y: rect.top + window.scrollY,
+            vy: 0,
+            destroyed: false,
+            element: el as HTMLElement
+          });
+        }
+      }
+    });
+    
+    setLetters(letterArray);
+  };
+
+  useEffect(() => {
+    if (!gameStarted) return;
+
+    const gameLoop = () => {
+      setPaddle(prev => {
+        let newX = prev.x;
+        if (keys.left) newX -= 8;
+        if (keys.right) newX += 8;
+        newX = Math.max(0, Math.min(800 - prev.width, newX));
+        return { ...prev, x: newX };
+      });
+
+      setBall(prev => {
+        let newX = prev.x + prev.vx;
+        let newY = prev.y + prev.vy;
+        let newVx = prev.vx;
+        let newVy = prev.vy;
+
+        if (newX <= prev.radius || newX >= 800 - prev.radius) newVx *= -1;
+        if (newY <= prev.radius) newVy *= -1;
+
+        if (newY + prev.radius >= paddle.y && 
+            newY - prev.radius <= paddle.y + paddle.height &&
+            newX >= paddle.x && 
+            newX <= paddle.x + paddle.width) {
+          newVy = -Math.abs(newVy);
+          newY = paddle.y - prev.radius;
+        }
+
+        if (newY > 600) {
+          newX = 400;
+          newY = 300;
+          newVx = 3;
+          newVy = -3;
+        }
+
+        return { ...prev, x: newX, y: newY, vx: newVx, vy: newVy };
+      });
+
+      setLetters(prev => prev.map(letter => {
+        if (letter.destroyed) {
+          return { ...letter, y: letter.y + letter.vy, vy: letter.vy + 0.5 };
+        }
+
+        const dx = ball.x - letter.x;
+        const dy = ball.y - letter.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < ball.radius + 10) {
+          if (letter.element) {
+            letter.element.style.opacity = '0.3';
+          }
+          return { ...letter, destroyed: true, vy: 2 };
+        }
+
+        return letter;
+      }));
+
+      animationRef.current = requestAnimationFrame(gameLoop);
+    };
+
+    animationRef.current = requestAnimationFrame(gameLoop);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [gameStarted, keys, paddle, ball]);
+
   return (
-    <div className="min-h-screen bg-gray-400">
+    <div className="min-h-screen bg-gray-400 relative">
       <div className="max-w-[800px] mx-auto px-4 py-12 md:py-16">
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-8">
@@ -12,6 +136,13 @@ export default function Index() {
             </div>
             <span className="text-2xl font-bold text-black">билайн</span>
           </div>
+          
+          <button
+            onClick={startGame}
+            className="mb-8 px-8 py-4 bg-[#FFDB00] text-black font-bold text-xl rounded-full hover:bg-[#FFE54D] transition-colors shadow-lg"
+          >
+            Начать
+          </button>
         </div>
 
         <Card className="rounded-3xl p-8 md:p-12 shadow-2xl bg-white">
@@ -159,6 +290,54 @@ export default function Index() {
           <p className="text-sm text-black/70">© 2024 ПАО «ВымпелКом»</p>
         </footer>
       </div>
+
+      {gameStarted && (
+        <div 
+          ref={canvasRef}
+          className="fixed inset-0 pointer-events-none z-50"
+          style={{ maxWidth: '800px', margin: '0 auto' }}
+        >
+          <div
+            className="absolute bg-black rounded"
+            style={{
+              left: `${paddle.x}px`,
+              top: `${paddle.y}px`,
+              width: `${paddle.width}px`,
+              height: `${paddle.height}px`,
+            }}
+          />
+          
+          <div
+            className="absolute bg-[#FFDB00] rounded-full"
+            style={{
+              left: `${ball.x - ball.radius}px`,
+              top: `${ball.y - ball.radius}px`,
+              width: `${ball.radius * 2}px`,
+              height: `${ball.radius * 2}px`,
+            }}
+          />
+          
+          {letters.filter(l => l.destroyed).map(letter => (
+            <div
+              key={letter.id}
+              className="absolute text-2xl font-bold text-black animate-pulse"
+              style={{
+                left: `${letter.x}px`,
+                top: `${letter.y}px`,
+                transform: `rotate(${letter.y % 360}deg)`,
+              }}
+            >
+              {letter.text}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {gameStarted && (
+        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-black/80 text-white px-6 py-3 rounded-full z-50">
+          Управление: ← → стрелки
+        </div>
+      )}
     </div>
   );
 }
