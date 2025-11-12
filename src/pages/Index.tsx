@@ -1,138 +1,164 @@
 import { Card } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
-import { useState } from "react";
 
 export default function Index() {
-  const [openQuestion, setOpenQuestion] = useState<number | null>(null);
-
-  const toggleQuestion = (index: number) => {
-    setOpenQuestion(openQuestion === index ? null : index);
-  };
-
-  const faqs = [
-    {
-      question: "Почему условия меняются?",
-      answer: "Мы пересматриваем условия тарифов для абонентов Yota и приводим их в соответствие с текущей экономической ситуацией. Изменение условий в тарифах коснулось клиентов, использующих архивные тарифные планы, стоимость которых не пересматривалась несколько лет.\n\nСвоевременная индексация позволит нам каждый день делать связь для вас ещё лучше, а продукты - технологичнее.\n\nВаши новые условия всё ещё одни из самых выгодных среди всех предложений операторов сотовой связи."
-    },
-    {
-      question: "Как пополнить баланс?",
-      answer: "Пополнить баланс можно в приложении Yota, терминалах оплаты, онлайн-банке или банковской картой на сайте http://www.yota.ru/pay.\n\nЧтобы всегда оставаться на связи, привяжите банковскую карту в приложении Yota – списания будут только тогда, когда на балансе не хватает денег для оплаты."
-    },
-    {
-      question: "Что будет, если не пополнить баланс вовремя?",
-      answer: "Звонки будут стоить по 3 руб. за минуту, СМС – по 3,9 руб., а интернет не будет доступен. Это не так выгодно, как оплачивать тариф сразу на 30 дней."
-    },
-    {
-      question: "Когда спишется абонентская плата в новом размере?",
-      answer: "Абонентская плата будет списываться раз в 30 дней.\nНовая плата спишется после 29 мая 2024 года.\n\nВ зависимости от величины скидки и абонентской платы расчет новой стоимости может отличаться на 10 копеек от указанной на странице."
-    },
-    {
-      question: "Подарочные минуты и ГБ останутся?",
-      answer: "Если у вас были подарочные пакеты минут и интернета, они сохранятся после изменения абонентской платы. Эти пакеты по-прежнему будут тратиться, когда закончатся основные объёмы по тарифу."
-    }
-  ];
-
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#FFD700' }}>
-      <div className="max-w-[680px] mx-auto px-4 py-8 md:py-12">
-        <div className="mb-8">
-          <Icon name="Wifi" size={40} className="text-white" />
+    <div className="min-h-screen" style={{ backgroundColor: '#FFDB00' }}>
+      <div className="max-w-[800px] mx-auto px-4 py-12 md:py-16">
+        <div className="mb-12">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
+              <span className="text-white text-2xl font-bold">Б</span>
+            </div>
+            <span className="text-2xl font-bold text-black">билайн</span>
+          </div>
         </div>
 
-        <Card className="rounded-3xl p-8 md:p-10 shadow-2xl">
-          <div className="mb-8">
-            <p className="text-base text-gray-700 mb-6">
-              С 5 апреля 2024 г. будут действовать новые условия вашего тарифа
-            </p>
-
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-              Что изменится в тарифе
-            </h1>
-
-            <div className="mb-6">
-              <p className="text-sm text-gray-600 mb-2">Стоимость услуг будет:</p>
-              <div className="flex items-end gap-2 mb-1">
-                <span className="text-5xl md:text-6xl font-bold text-gray-900">700</span>
-                <span className="text-2xl font-bold text-gray-900 mb-2">₽</span>
-                <span className="text-lg text-gray-600 mb-2">за 30 дней</span>
-              </div>
-              <p className="text-sm text-gray-500">
-                с учетом вашей скидки <span className="font-semibold">15%</span> 650 ₽
+        <Card className="rounded-3xl p-8 md:p-12 shadow-2xl bg-white">
+          <div className="space-y-8">
+            <div>
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+                Можно по-честному.
+              </h1>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+                Почему иногда приходится индексировать цены
+              </h2>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                В двух словах: чтобы видео не зависало на самом эпичном моменте, связь ловила и в офисе, и в подвальном киберклубе, а работать было комфортно и из дома, и из кафе.
               </p>
             </div>
 
-            <div className="mb-6">
-              <p className="text-sm text-gray-700 font-semibold mb-3">
-                Состав тарифа не изменится:
+            <div className="border-t border-gray-200 pt-8">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">По порядку</h3>
+              <p className="text-base text-gray-700 leading-relaxed mb-4">
+                Ещё вчера ваш тариф стоил <span className="font-semibold">300 ₽</span>, а сегодня за тот же пакет просят <span className="font-semibold">350 ₽</span> — естественно, это может раздражать.
               </p>
-              <div className="flex items-baseline gap-8">
-                <div>
-                  <span className="text-4xl md:text-5xl font-bold text-gray-900">1300</span>
-                  <span className="text-sm align-top text-gray-600">МИНУТ</span>
-                </div>
-                <div>
-                  <span className="text-4xl md:text-5xl font-bold text-gray-900">35</span>
-                  <span className="text-sm align-top text-gray-600">ГБ</span>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Честно: даже внутри <span className="font-semibold">билайн</span> мы не в восторге от любых повышений. Но есть причины, о которых важно говорать открыто.
+              </p>
+            </div>
+
+            <div className="border-t border-gray-200 pt-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Зачем это нужно</h3>
+              
+              <div className="mb-8">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-[#FFDB00] flex items-center justify-center flex-shrink-0 mt-1">
+                    <Icon name="TrendingUp" size={20} className="text-black" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-gray-900 mb-3">Идём в ногу со временем</h4>
+                    <p className="text-base text-gray-700 leading-relaxed mb-3">
+                      Когда-то казалось, что к 2020-му мобильной связи хватит «на сто тысяч», а сейчас все операторы вместе обслуживают сотни миллионов SIM-карт.
+                    </p>
+                    <p className="text-base text-gray-700 leading-relaxed mb-3">
+                      Трафика становится больше: люди больше смотрят видео, общаются в мессенджерах, работают в облаках — и сеть должна выдерживать нагрузку.
+                    </p>
+                    <p className="text-base text-gray-700 leading-relaxed">
+                      Чтобы соответствовать вашим ожиданиям, мы приводим условия тарифов в соответствие с экономикой и продолжаем инвестировать в сеть и продукты. Это делает связь стабильнее, интернет — быстрее, а сервисы — технологичнее.
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="flex items-start gap-2 mt-4">
-                <Icon name="CheckCircle2" size={20} className="text-[#00ccff] flex-shrink-0 mt-0.5" />
-                <p className="text-sm text-gray-700">
-                  Ранее подключенные опции сохранятся
+
+              <div className="mb-8">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-[#FFDB00] flex items-center justify-center flex-shrink-0 mt-1">
+                    <Icon name="Target" size={20} className="text-black" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-gray-900 mb-3">Остаёмся выгодными</h4>
+                    <p className="text-base text-gray-700 leading-relaxed mb-4">
+                      Мы не можем выключить влияние экономики. Но можем — и делаем — две вещи:
+                    </p>
+                    
+                    <div className="space-y-4 ml-4">
+                      <div>
+                        <p className="text-base font-semibold text-gray-900 mb-2">
+                          Сначала — эффективность.
+                        </p>
+                        <p className="text-base text-gray-700 leading-relaxed">
+                          Оптимизируем внутренние расходы, прежде чем что-то менять для клиентов.
+                        </p>
+                      </div>
+                      
+                      <div>
+                        <p className="text-base font-semibold text-gray-900 mb-2">
+                          Точечные изменения.
+                        </p>
+                        <p className="text-base text-gray-700 leading-relaxed">
+                          Корректируем в первую очередь архивные тарифы, которые не пересматривались много лет, и следим, чтобы после обновления они не стали дороже сопоставимых актуальных тарифов билайн.
+                        </p>
+                      </div>
+                    </div>
+
+                    <p className="text-base text-gray-700 leading-relaxed mt-4">
+                      Благодаря вашей поддержке у нас есть то, чем мы гордимся: удобное приложение, честные настройки тарифа, качественный интернет.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-gray-200 pt-8">
+              <div className="bg-gradient-to-br from-[#FFDB00]/20 to-[#FFDB00]/10 rounded-2xl p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Честное обещание</h3>
+                <p className="text-base text-gray-700 leading-relaxed mb-3">
+                  Мы не пообещаем, что в 2035 цены будут как сегодня.
+                </p>
+                <p className="text-base text-gray-700 leading-relaxed mb-1">
+                  Зато пообещаем другое: мы всегда объясним причины изменений простым языком и вовремя.
+                </p>
+                <p className="text-lg font-bold text-gray-900 mt-4">
+                  По-честному. По-билайн.
                 </p>
               </div>
             </div>
 
-            <div className="space-y-2 mb-8">
-              <p className="text-sm text-gray-700">
-                Узнать,{" "}
-                <a href="#" className="text-[#00ccff] hover:underline">
-                  почему Yota повышает цены
-                </a>
-              </p>
-              <p className="text-sm text-gray-700">
-                Ознакомиться с новостью можно{" "}
-                <a href="#" className="text-[#00ccff] hover:underline">
-                  здесь
-                </a>
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
-                Частые вопросы
-              </h2>
-
-              <div className="space-y-4">
-                {faqs.map((faq, index) => (
-                  <div key={index} className="border-b border-gray-200 last:border-b-0">
-                    <button
-                      onClick={() => toggleQuestion(index)}
-                      className="w-full flex items-center justify-between py-4 text-left group"
-                    >
-                      <span className="text-base font-medium text-gray-900 pr-4">
-                        {faq.question}
-                      </span>
-                      <Icon
-                        name={openQuestion === index ? "Minus" : "Plus"}
-                        size={20}
-                        className="text-[#00ccff] flex-shrink-0"
-                      />
-                    </button>
-                    {openQuestion === index && (
-                      <div className="pb-6 text-sm text-gray-700 leading-relaxed whitespace-pre-line">
-                        {faq.answer}
-                      </div>
-                    )}
+            <div className="border-t border-gray-200 pt-8">
+              <div className="grid md:grid-cols-3 gap-6">
+                <Card className="p-6 bg-gray-50 border-0">
+                  <div className="w-12 h-12 rounded-full bg-[#FFDB00] flex items-center justify-center mb-4">
+                    <Icon name="Smartphone" size={24} className="text-black" />
                   </div>
-                ))}
+                  <h4 className="font-bold text-gray-900 mb-2">Удобное приложение</h4>
+                  <p className="text-sm text-gray-600">
+                    Всё под рукой: баланс, тарифы, управление услугами
+                  </p>
+                </Card>
+
+                <Card className="p-6 bg-gray-50 border-0">
+                  <div className="w-12 h-12 rounded-full bg-[#FFDB00] flex items-center justify-center mb-4">
+                    <Icon name="Settings" size={24} className="text-black" />
+                  </div>
+                  <h4 className="font-bold text-gray-900 mb-2">Честные настройки</h4>
+                  <p className="text-sm text-gray-600">
+                    Без скрытых платежей и неожиданных списаний
+                  </p>
+                </Card>
+
+                <Card className="p-6 bg-gray-50 border-0">
+                  <div className="w-12 h-12 rounded-full bg-[#FFDB00] flex items-center justify-center mb-4">
+                    <Icon name="Wifi" size={24} className="text-black" />
+                  </div>
+                  <h4 className="font-bold text-gray-900 mb-2">Качественный интернет</h4>
+                  <p className="text-sm text-gray-600">
+                    Стабильная связь там, где вам нужно
+                  </p>
+                </Card>
               </div>
             </div>
           </div>
         </Card>
 
-        <footer className="mt-8 text-center text-sm text-white/80">
-          © Yota, 2008-2024г. Все права защищены.
+        <footer className="mt-12 text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
+              <span className="text-white text-sm font-bold">Б</span>
+            </div>
+            <span className="text-xl font-bold text-black">билайн</span>
+          </div>
+          <p className="text-sm text-black/70">© 2024 ПАО «ВымпелКом»</p>
         </footer>
       </div>
     </div>
