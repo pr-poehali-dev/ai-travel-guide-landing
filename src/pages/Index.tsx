@@ -17,9 +17,7 @@ export default function Index() {
         <Card className="rounded-3xl p-8 md:p-12 shadow-2xl bg-white">
           <div className="space-y-8">
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
-                Можно по-честному.
-              </h1>
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">Открыто о причинах изменений</h1>
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
                 Почему иногда приходится индексировать цены
               </h2>
